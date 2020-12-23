@@ -10,7 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_130437) do
+ActiveRecord::Schema.define(version: 2020_12_20_124001) do
+
+  create_table "comments", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "house_id"
+    t.integer "star"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "house_photos", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "house_id"
+    t.string "photo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "houses", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "address"
+    t.string "image"
+    t.string "pice"
+    t.integer "acreage"
+    t.string "kind"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.integer "gara_size"
+    t.boolean "is_wc"
+    t.boolean "is_wf"
+    t.boolean "is_cook"
+    t.boolean "is_elevator"
+    t.boolean "is_time_free"
+    t.boolean "is_pet"
+    t.boolean "is_aircon"
+    t.boolean "is_rent"
+    t.string "video_url"
+    t.integer "user_id"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
