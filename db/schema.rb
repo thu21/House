@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_174640) do
   create_table "cares", charset: "utf8mb4", force: :cascade do |t|
     t.integer "house_id"
     t.integer "user_id"
+    t.boolean "is_contact"
+    t.integer "host_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -23,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_174640) do
     t.integer "user_id"
     t.integer "house_id"
     t.integer "star"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_174640) do
   end
 
   create_table "houses", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+    t.text "title"
+    t.text "description"
     t.string "address"
     t.string "image"
     t.string "pice"
@@ -75,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_174640) do
     t.string "phone"
     t.string "address"
     t.string "user_code"
-    t.boolean "is_host"
+    t.string "role", default: "user"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

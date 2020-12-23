@@ -14,8 +14,16 @@ class HousesController < ApplicationController
     @house_photos = @house.house_photos.all
   end
 
+  # GET /houses/city/hanoi
+  # GET /houses/city/hanoi
+  def houses_city
+    @list_house = house_by_city(params[:id])
+  end
+
   # GET /houses/new
   def new
+    redirect_to root_path if current_user.role != "host"
+
     @house = current_user.house.build
     @house_photos = @house.house_photos.build
   end
@@ -72,6 +80,12 @@ class HousesController < ApplicationController
       format.html { redirect_to houses_url, notice: "House was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # import data
+  def import
+    House.import(params[:file])
+    redirect_to houses_path, notice: "Thêm dữ liệu cho House thành công"
   end
 
   private
