@@ -20,6 +20,7 @@ class Ability
     when "host"
       can :access, :rails_admin
       can :read, :dashboard
+
       can :read, House, :user_id => user.id
       can :update, House, :user_id => user.id
       can :show_in_app, House, :user_id => user.id
@@ -32,6 +33,7 @@ class Ability
       can :read, Care, :host_id => user.id
       can :update, Care, :host_id => user.id
       can :destroy, Care, :host_id => user.id
+
       can :read, User
     when "user"
       return
