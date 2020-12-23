@@ -26,6 +26,9 @@ class Ability
       can :destroy, House, :user_id => user.id
       can :create, House
 
+      can :read, Notification, :user_recived_id => user.id
+      can :destroy, Notification, :user_recived_id => user.id
+
       can :read, Care, :host_id => user.id
       can :update, Care, :host_id => user.id
       can :destroy, Care, :host_id => user.id
